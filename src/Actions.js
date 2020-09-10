@@ -45,17 +45,18 @@ const Actions = (props) => {
     priceRangeRestaurants = [...new Set(priceRangeRestaurants)]; // removing the duplicate entries of restaurants
     console.log(restaurants);
     console.log(priceRangeRestaurants);
-    priceRangeRestaurants.length!=0?
-    document.getElementById("printMsg").innerHTML =
-      "You have selected price range between $" +
-      minPrice +
-      " and $" +
-      maxPrice:
-      document.getElementById("printMsg").innerHTML =
-      "You have selected price range between $" +
-      minPrice +
-      " and $" +
-      maxPrice+". But no restaurants available."
+    priceRangeRestaurants.length !== 0
+      ? (document.getElementById("printMsg").innerHTML =
+          "You have selected price range between $" +
+          minPrice +
+          " and $" +
+          maxPrice)
+      : (document.getElementById("printMsg").innerHTML =
+          "You have selected price range between $" +
+          minPrice +
+          " and $" +
+          maxPrice +
+          ". But no restaurants available.");
     setRestaurants(priceRangeRestaurants);
   };
 
@@ -85,9 +86,10 @@ const Actions = (props) => {
     });
     dietSelected = [...new Set(dietSelected)]; // removing the duplicate entries of restaurants
     console.log(dietSelected);
-    dietSelected.length!=0?
-    document.getElementById("printMsg").innerHTML = " ":
-    document.getElementById("printMsg").innerHTML = "Sorry, no restaurants found"
+    dietSelected.length !== 0
+      ? (document.getElementById("printMsg").innerHTML = " ")
+      : (document.getElementById("printMsg").innerHTML =
+          "Sorry, no restaurants found");
     setRestaurants(dietSelected);
   };
 

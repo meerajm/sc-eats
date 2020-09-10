@@ -45,7 +45,7 @@ function App() {
           </section>
         })}
       </div>
-      <div><label id="printMsg" className="display-msg"></label></div>
+      <div><label id="printMsg" className="label-app"></label></div>
     </div>
   );
 }

@@ -54,7 +54,7 @@ nav a {
 .actions button {
   border-radius: 50px;
   padding: 8px 12px;
-  background:black;
+  background: black;
   font-size: 16px;
   cursor: pointer;
   border: none;
@@ -133,4 +133,17 @@ nav a {
 
 .shadow {
   box-shadow: 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.actions label {
+  color: #000;
+  font-weight: bold;
+}
+
+.label-app {
+  color:brown;
+  font-weight: bold;
+  font-style: italic;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: larger;
 }
