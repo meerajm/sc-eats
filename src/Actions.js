@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 // read: https://fontawesome.com/how-to-use/on-the-web/using-with/react
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import data from './data.json'
-
+import data from "./data.json";
 
 const Actions = (props) => {
-  const {setRestaurants}=props;
+  const { setRestaurants } = props;
 
   const [showSortSelector, setSortSelector] = useState(false);
   const [showDietarySelector, setDietarySelector] = useState(false);
   const [showPriceRangeSelector, setPriceRangeSelector] = useState(false);
-  const [dietTypeArr,setDietTypeArr] = useState("");
+  const [dietTypeArr, setDietTypeArr] = useState("");
 
-  const handeGeneralSorting = (restaurants, sortBy) => {    
+  const handeGeneralSorting = (restaurants, sortBy) => {
     let sortedRestaurants = [];
     if (sortBy === "maxDeliveryTime") {
       sortedRestaurants = restaurants
@@ -22,9 +21,10 @@ const Actions = (props) => {
       sortedRestaurants = restaurants
         .slice()
         .sort((a, b) => b[sortBy] - a[sortBy]);
-    }  
+    }
     console.log(sortedRestaurants);
-    document.getElementById("printMsg").innerHTML="Restaurants sorted in the order of "+sortBy;
+    document.getElementById("printMsg").innerHTML =
+      "Restaurants sorted in the order of " + sortBy;
     setRestaurants(sortedRestaurants);
   };
 
@@ -45,23 +45,33 @@ const Actions = (props) => {
     priceRangeRestaurants = [...new Set(priceRangeRestaurants)]; // removing the duplicate entries of restaurants
     console.log(restaurants);
     console.log(priceRangeRestaurants);
-    document.getElementById("printMsg").innerHTML="You have selected price range between $"+minPrice+" and $"+maxPrice;
+    priceRangeRestaurants.length!=0?
+    document.getElementById("printMsg").innerHTML =
+      "You have selected price range between $" +
+      minPrice +
+      " and $" +
+      maxPrice:
+      document.getElementById("printMsg").innerHTML =
+      "You have selected price range between $" +
+      minPrice +
+      " and $" +
+      maxPrice+". But no restaurants available."
     setRestaurants(priceRangeRestaurants);
   };
 
-  let getDietTypes=(diet,isDietChecked)=>{
-let dietTypeArrCopy=[];
-isDietChecked
-? dietTypeArrCopy.push(diet)
-: dietTypeArrCopy.splice(dietTypeArrCopy.indexOf(diet), 1);
-setDietTypeArr(dietTypeArrCopy);
-console.log(dietTypeArrCopy);
-  }
+  // This function gets all the diet types chosen by user into an array
+  let getDietTypes = (dietTypeArr, diet, isDietChecked) => {
+    let dietTypeArrCopy = [...dietTypeArr];
+    isDietChecked
+      ? dietTypeArrCopy.push(diet)
+      : dietTypeArrCopy.splice(dietTypeArrCopy.indexOf(diet), 1);
+    setDietTypeArr(dietTypeArrCopy);
+    console.log(dietTypeArrCopy);
+  };
 
-  let dietarySelect = (restaurants,dietTypeArr) => {
+  let dietarySelect = (restaurants, dietTypeArr) => {
     let dietSelected = [];
     //Add all the selected dietary to an array(dietTypeArr)
-    
     restaurants.forEach((element) => {
       element.menu.forEach((itemsElement) => {
         itemsElement.items.forEach((data) => {
@@ -75,14 +85,22 @@ console.log(dietTypeArrCopy);
     });
     dietSelected = [...new Set(dietSelected)]; // removing the duplicate entries of restaurants
     console.log(dietSelected);
-    document.getElementById("printMsg").innerHTML=" ";
+    dietSelected.length!=0?
+    document.getElementById("printMsg").innerHTML = " ":
+    document.getElementById("printMsg").innerHTML = "Sorry, no restaurants found"
     setRestaurants(dietSelected);
   };
 
   return (
     <div className="actions">
       <span className="button-group">
-        <button onClick={() => {setPriceRangeSelector(false);setDietarySelector(false); setSortSelector(!showSortSelector)}}>
+        <button
+          onClick={() => {
+            setPriceRangeSelector(false);
+            setDietarySelector(false);
+            setSortSelector(!showSortSelector);
+          }}
+        >
           <span>Sort</span> <FontAwesomeIcon icon={"chevron-down"} />
         </button>
         {showSortSelector && (
@@ -135,7 +153,13 @@ console.log(dietTypeArrCopy);
       {/* TODO */}
       {/* <!-- Implement as assignment for Thursday --> */}
       <span className="button-group">
-        <button onClick={() =>{setDietarySelector(false);setSortSelector(false); setPriceRangeSelector(!showPriceRangeSelector)}}>
+        <button
+          onClick={() => {
+            setDietarySelector(false);
+            setSortSelector(false);
+            setPriceRangeSelector(!showPriceRangeSelector);
+          }}
+        >
           <span>Price Range</span> <FontAwesomeIcon icon={"chevron-down"} />
         </button>
         {showPriceRangeSelector && (
@@ -155,16 +179,20 @@ console.log(dietTypeArrCopy);
             >
               <span>$201-$300</span>
             </button>
-            <button
-              onClick={(event) => priceRangeSelect(data.restarants, 301)}
-            >
+            <button onClick={(event) => priceRangeSelect(data.restarants, 301)}>
               <span>Above $300</span>
             </button>
           </div>
         )}
       </span>
       <span className="button-group">
-        <button onClick={() => {setSortSelector(false);setPriceRangeSelector(false);setDietarySelector(!showDietarySelector)}}>
+        <button
+          onClick={() => {
+            setSortSelector(false);
+            setPriceRangeSelector(false);
+            setDietarySelector(!showDietarySelector);
+          }}
+        >
           <span>Dietary choice</span> <FontAwesomeIcon icon={"chevron-down"} />
         </button>
         {showDietarySelector && (
@@ -178,6 +206,7 @@ console.log(dietTypeArrCopy);
                 name="dietaryFilter"
                 onChange={(event) =>
                   getDietTypes(
+                    dietTypeArr,
                     event.currentTarget.value,
                     event.currentTarget.checked
                   )
@@ -193,6 +222,7 @@ console.log(dietTypeArrCopy);
                 name="dietaryFilter"
                 onChange={(event) =>
                   getDietTypes(
+                    dietTypeArr,
                     event.currentTarget.value,
                     event.currentTarget.checked
                   )
@@ -208,13 +238,16 @@ console.log(dietTypeArrCopy);
                 name="dietaryFilter"
                 onChange={(event) =>
                   getDietTypes(
+                    dietTypeArr,
                     event.currentTarget.value,
                     event.currentTarget.checked
                   )
                 }
               />
             </label>
-            <button onClick={()=>dietarySelect(data.restarants,dietTypeArr)}>Show restaurants</button>
+            <button onClick={() => dietarySelect(data.restarants, dietTypeArr)}>
+              Show restaurants
+            </button>
           </div>
         )}
       </span>
