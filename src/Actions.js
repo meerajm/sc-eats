@@ -22,7 +22,6 @@ const Actions = (props) => {
         .slice()
         .sort((a, b) => b[sortBy] - a[sortBy]);
     }
-    console.log(sortedRestaurants);
     document.getElementById("printMsg").innerHTML =
       "Restaurants sorted in the order of " + sortBy;
     setRestaurants(sortedRestaurants);
@@ -43,8 +42,6 @@ const Actions = (props) => {
       });
     });
     priceRangeRestaurants = [...new Set(priceRangeRestaurants)]; // removing the duplicate entries of restaurants
-    console.log(restaurants);
-    console.log(priceRangeRestaurants);
     priceRangeRestaurants.length !== 0
       ? (document.getElementById("printMsg").innerHTML =
           "You have selected price range between $" +
@@ -67,7 +64,6 @@ const Actions = (props) => {
       ? dietTypeArrCopy.push(diet)
       : dietTypeArrCopy.splice(dietTypeArrCopy.indexOf(diet), 1);
     setDietTypeArr(dietTypeArrCopy);
-    console.log(dietTypeArrCopy);
   };
 
   let dietarySelect = (restaurants, dietTypeArr) => {
@@ -85,7 +81,6 @@ const Actions = (props) => {
       });
     });
     dietSelected = [...new Set(dietSelected)]; // removing the duplicate entries of restaurants
-    console.log(dietSelected);
     dietSelected.length !== 0
       ? (document.getElementById("printMsg").innerHTML = " ")
       : (document.getElementById("printMsg").innerHTML =
