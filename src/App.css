@@ -139,6 +139,7 @@ nav a {
 .restaurants section .description {
   font-size: 0.85em;
   line-height: 1.2;
+  background: salmon;
 }
 .restaurants section img {
   height: 250px;
@@ -160,4 +161,11 @@ nav a {
   font-style: italic;
   font-family: 'Courier New', Courier, monospace;
   font-size: larger;
+}
+
+.restaurants h4{
+  background-color: salmon;
+}
+.restaurants h2{
+  background-color: rgb(230, 98, 84);
 }

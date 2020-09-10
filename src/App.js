@@ -42,6 +42,9 @@ function App() {
             <img src={restaurant.img} alt="" />
             <h2>{restaurant.name}</h2>
             <p className="description">{restaurant.description}</p>
+        <h4>Rating: {restaurant.rating}</h4>
+        <h4>{restaurant.popularity}</h4>
+        <h4>Delivery Time: {restaurant.maxDeliveryTime}</h4>
           </section>
         })}
       </div>

@@ -53,7 +53,7 @@ const Actions = (props) => {
           minPrice +
           " and $" +
           maxPrice +
-          ". But no restaurants available.");
+          ". But sorry no restaurants available.");
     setRestaurants(priceRangeRestaurants);
   };
 
