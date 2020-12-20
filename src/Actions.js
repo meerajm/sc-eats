@@ -164,20 +164,20 @@ const Actions = (props) => {
             <button
               onClick={(event) => priceRangeSelect(data.restarants, 50, 100)}
             >
-              <span>$50-$100</span>
+              <span>$</span>
             </button>
             <button
               onClick={(event) => priceRangeSelect(data.restarants, 101, 200)}
             >
-              <span>$101-$200</span>
+              <span>$$</span>
             </button>
             <button
               onClick={(event) => priceRangeSelect(data.restarants, 201, 300)}
             >
-              <span>$201-$300</span>
+              <span>$$$</span>
             </button>
             <button onClick={(event) => priceRangeSelect(data.restarants, 301)}>
-              <span>Above $300</span>
+              <span>$$$$</span>
             </button>
           </div>
         )}

@@ -98,6 +98,7 @@ nav a {
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  z-index: 100;
 }
 
 .actions .button-group div > label {
@@ -168,4 +169,16 @@ nav a {
 }
 .restaurants h2{
   background-color: rgb(230, 98, 84);
+}
+
+.tag {
+  padding: 5px;
+  border: none;
+  position: absolute;
+  background:salmon;
+  color: black;
+}
+.overlay {
+  position: relative;
+  width: 100%;
 }
