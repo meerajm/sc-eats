@@ -82,7 +82,7 @@ function App() {
         <form className="searchFood" onSubmit={(e) => e.preventDefault()}>
           <input
             type="text"
-            placeholder="Search for food"
+            placeholder="Search restaurant"
             value={restuarantName}
             onBlur={(e) => setName(e.target.value)}
             onChange={(e) => setName(e.target.value)}
